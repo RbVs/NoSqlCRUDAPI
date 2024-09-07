@@ -1,3 +1,5 @@
+using NoSqlCRUDAPI.Database;
+
 namespace NoSqlCRUDAPI;
 
 public class Program
@@ -12,6 +14,15 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        // Add the LiteDbContext to the services collection
+        builder.Services.AddSingleton<LiteDbContext>();
+        
+        // Add the Repository to the services collection
+        builder.Services.AddScoped(typeof(Repository<>));
+        
+        // Add the controllers to the services collection
+        builder.Services.AddControllers();
 
         var app = builder.Build();
 
@@ -25,7 +36,9 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
+        
+        app.MapControllers();
+        
         app.Run();
     }
 }
