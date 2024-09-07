@@ -1,0 +1,6 @@
+﻿services:
+  nosqlcrudapi:
+    image: nosqlcrudapi
+    build:
+      context: .
+      dockerfile: NoSqlCRUDAPI/Dockerfile
