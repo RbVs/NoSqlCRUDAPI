@@ -1,6 +1,0 @@
-@NoSqlCRUDAPI_HostAddress = http://localhost:5091
-
-GET {{NoSqlCRUDAPI_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
